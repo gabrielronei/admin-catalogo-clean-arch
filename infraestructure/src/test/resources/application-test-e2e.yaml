@@ -1,0 +1,10 @@
+logging:
+  level:
+    ROOT: info
+
+mysql:
+  driver-class-name: org.h2.Driver
+  username: root
+  password: 123456
+  schema: admin_videos
+  url: localhost:${mysql.port}

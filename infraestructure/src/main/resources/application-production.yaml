@@ -1,0 +1,11 @@
+mysql:
+  username: ${DATABASE_USERNAME:root}
+  password: ${DATABASE_PASSWORD:123456}
+  schema: admin_videos
+  url: ${DATABASE_MYSQL_PASSWORD:localhost:3312}
+
+spring:
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
