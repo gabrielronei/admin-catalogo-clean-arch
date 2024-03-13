@@ -1,7 +1,7 @@
 package br.com.gabriels.infraestructure.category;
 
 import br.com.gabriels.domain.category.Category;
-import br.com.gabriels.domain.category.CategorySearchQuery;
+import br.com.gabriels.domain.pagination.SearchQuery;
 import br.com.gabriels.domain.pagination.Pagination;
 import br.com.gabriels.infraestructure.CleanUpExtensions;
 import br.com.gabriels.infraestructure.category.persistence.CategoryEntity;
@@ -124,14 +124,14 @@ class DefaultCategoryGatewayTest {
 
         Assertions.assertThat(this.categoryRepository.count()).isEqualTo(entities.size());
 
-        Pagination<Category> all = this.defaultCategoryGateway.findAll(new CategorySearchQuery(0, entities.size(), "", "name", "asc"));
+        Pagination<Category> all = this.defaultCategoryGateway.findAll(new SearchQuery(0, entities.size(), "", "name", "asc"));
 
         Assertions.assertThat(all.items()).extracting(Category::getName).containsExactly(comedy.getName(), documentary.getName(), horror.getName());
     }
 
     @Test
     void should_return_nothing_on_findAll() {
-        Pagination<Category> empty = this.defaultCategoryGateway.findAll(new CategorySearchQuery(0, 1, "", "name", "asc"));
+        Pagination<Category> empty = this.defaultCategoryGateway.findAll(new SearchQuery(0, 1, "", "name", "asc"));
 
         Assertions.assertThat(empty.items()).isEmpty();
     }
@@ -149,7 +149,7 @@ class DefaultCategoryGatewayTest {
 
         Assertions.assertThat(this.categoryRepository.count()).isEqualTo(entities.size());
 
-        Pagination<Category> all = this.defaultCategoryGateway.findAll(new CategorySearchQuery(0, entities.size(), "hah", "name", "asc"));
+        Pagination<Category> all = this.defaultCategoryGateway.findAll(new SearchQuery(0, entities.size(), "hah", "name", "asc"));
 
         Assertions.assertThat(all.items()).hasSize(1);
         Assertions.assertThat(all.items()).extracting(Category::getDescription).containsExactly(comedy.getDescription());
@@ -168,7 +168,7 @@ class DefaultCategoryGatewayTest {
 
         Assertions.assertThat(this.categoryRepository.count()).isEqualTo(entities.size());
 
-        Pagination<Category> all = this.defaultCategoryGateway.findAll(new CategorySearchQuery(0, entities.size(), "", "description", "DESC"));
+        Pagination<Category> all = this.defaultCategoryGateway.findAll(new SearchQuery(0, entities.size(), "", "description", "DESC"));
 
         Assertions.assertThat(all.items()).hasSize(entities.size());
         Assertions.assertThat(all.items()).extracting(Category::getDescription).containsExactly(horror.getDescription(), comedy.getDescription(), documentary.getDescription());

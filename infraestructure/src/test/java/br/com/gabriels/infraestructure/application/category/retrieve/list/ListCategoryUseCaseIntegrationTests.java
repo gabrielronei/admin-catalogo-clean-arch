@@ -2,6 +2,7 @@ package br.com.gabriels.infraestructure.application.category.retrieve.list;
 
 import br.com.gabriels.application.category.retrieve.list.ListCategoryUseCase;
 import br.com.gabriels.domain.category.*;
+import br.com.gabriels.domain.pagination.SearchQuery;
 import br.com.gabriels.infraestructure.CleanUpExtensions;
 import br.com.gabriels.infraestructure.category.persistence.CategoryEntity;
 import br.com.gabriels.infraestructure.category.persistence.CategoryRepository;
@@ -55,7 +56,7 @@ public class ListCategoryUseCaseIntegrationTests {
         final var expectedItemsCount = 0;
         final var expectedTotal = 0;
 
-        final var aQuery = new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+        final var aQuery = new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         final var actualResult = listCategoryUseCase.execute(aQuery);
 
@@ -79,7 +80,7 @@ public class ListCategoryUseCaseIntegrationTests {
         final var expectedSort = "name";
         final var expectedDirection = "asc";
 
-        final var aQuery = new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+        final var aQuery = new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         final var actualResult = listCategoryUseCase.execute(aQuery);
 
@@ -103,7 +104,7 @@ public class ListCategoryUseCaseIntegrationTests {
                                                                                                       final String expectedCategoryName) {
         final var expectedTerms = "";
 
-        final var aQuery = new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+        final var aQuery = new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         final var actualResult = listCategoryUseCase.execute(aQuery);
 
@@ -128,7 +129,7 @@ public class ListCategoryUseCaseIntegrationTests {
         final var expectedDirection = "asc";
         final var expectedTerms = "";
 
-        final var aQuery = new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+        final var aQuery = new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         final var actualResult = listCategoryUseCase.execute(aQuery);
 

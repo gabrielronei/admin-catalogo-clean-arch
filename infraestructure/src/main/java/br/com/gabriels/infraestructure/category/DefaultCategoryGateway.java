@@ -1,6 +1,7 @@
 package br.com.gabriels.infraestructure.category;
 
 import br.com.gabriels.domain.category.*;
+import br.com.gabriels.domain.pagination.SearchQuery;
 import br.com.gabriels.domain.pagination.Pagination;
 import br.com.gabriels.infraestructure.category.persistence.CategoryEntity;
 import br.com.gabriels.infraestructure.category.persistence.CategoryRepository;
@@ -46,7 +47,7 @@ public class DefaultCategoryGateway implements CategoryGateway {
     }
 
     @Override
-    public Pagination<Category> findAll(CategorySearchQuery categorySearchQuery) {
+    public Pagination<Category> findAll(SearchQuery categorySearchQuery) {
         PageRequest pageRequest = PageRequest.of(categorySearchQuery.page(), categorySearchQuery.perPage(), Sort.by(Sort.Direction.fromString(categorySearchQuery.direction()), categorySearchQuery.sort()));
 
         Specification<CategoryEntity> specification = Optional.ofNullable(categorySearchQuery.terms()).filter(term -> !term.isBlank())

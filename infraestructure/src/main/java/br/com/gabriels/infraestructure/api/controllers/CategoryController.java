@@ -8,7 +8,7 @@ import br.com.gabriels.application.category.retrieve.list.ListCategoryUseCase;
 import br.com.gabriels.application.category.update.UpdateCategoryOutput;
 import br.com.gabriels.application.category.update.UpdateCategoryUseCase;
 import br.com.gabriels.domain.category.CategoryID;
-import br.com.gabriels.domain.category.CategorySearchQuery;
+import br.com.gabriels.domain.pagination.SearchQuery;
 import br.com.gabriels.domain.pagination.Pagination;
 import br.com.gabriels.domain.validation.handler.Notification;
 import br.com.gabriels.infraestructure.api.CategoryAPI;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 import java.util.function.Function;
-import java.util.stream.IntStream;
 
 @RestController
 public class CategoryController implements CategoryAPI {
@@ -52,7 +51,7 @@ public class CategoryController implements CategoryAPI {
 
     @Override
     public Pagination<?> listCategories(final String search, final int page, final int perPage, final String sort, final String direction) {
-        return this.listCategoryUseCase.execute(new CategorySearchQuery(page, perPage, search, sort, direction));
+        return this.listCategoryUseCase.execute(new SearchQuery(page, perPage, search, sort, direction));
     }
 
     @Override
