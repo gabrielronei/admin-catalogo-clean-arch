@@ -1,4 +1,4 @@
-package br.com.gabriels.application.create;
+package br.com.gabriels.application.category.create;
 
 import br.com.gabriels.application.category.create.*;
 import br.com.gabriels.domain.category.CategoryGateway;

@@ -1,4 +1,4 @@
-package br.com.gabriels.application.update;
+package br.com.gabriels.application.category.update;
 
 import br.com.gabriels.application.category.update.*;
 import br.com.gabriels.domain.category.*;

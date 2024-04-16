@@ -1,4 +1,4 @@
-package br.com.gabriels.application.delete;
+package br.com.gabriels.application.category.delete;
 
 import br.com.gabriels.application.category.delete.DefaultDeleteCategoryUseCase;
 import br.com.gabriels.domain.category.*;

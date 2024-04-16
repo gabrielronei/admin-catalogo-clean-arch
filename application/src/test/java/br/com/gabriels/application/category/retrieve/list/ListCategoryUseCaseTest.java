@@ -1,4 +1,4 @@
-package br.com.gabriels.application.retrieve.list;
+package br.com.gabriels.application.category.retrieve.list;
 
 import br.com.gabriels.application.category.retrieve.list.CategoryListOutput;
 import br.com.gabriels.application.category.retrieve.list.DefaultListCategoryUseCase;
