@@ -9,7 +9,7 @@ public interface ValidationHandler {
 
     ValidationHandler append(ValidationHandler anHandler);
 
-    ValidationHandler validate(Validation aValidation);
+    <T> T validate(Validation<T> aValidation);
 
     default List<Error> getErrors() {
         return Collections.emptyList();
@@ -19,7 +19,7 @@ public interface ValidationHandler {
         return !getErrors().isEmpty();
     }
 
-    interface Validation {
-        void validate();
+    interface Validation<T> {
+        T validate();
     }
 }

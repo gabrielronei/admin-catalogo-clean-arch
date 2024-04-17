@@ -1,14 +1,13 @@
 package br.com.gabriels.domain.genre;
 
-import br.com.gabriels.domain.category.Category;
-import br.com.gabriels.domain.pagination.SearchQuery;
 import br.com.gabriels.domain.pagination.Pagination;
+import br.com.gabriels.domain.pagination.SearchQuery;
 
 import java.util.Optional;
 
 public interface GenreGateway {
 
-    Category create(Genre genre);
+    Genre create(Genre genre);
 
     void deleteById(GenreId genreId);
 

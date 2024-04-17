@@ -63,6 +63,11 @@ public class Genre extends AggregateRoot<GenreId> {
         this.categories.add(categoryID);
     }
 
+    public void addCategories(List<CategoryID> categories) {
+        if (categories == null || categories.isEmpty()) return;
+        this.categories.addAll(categories);
+    }
+
     public void removeCategory(CategoryID categoryID) {
         if (categoryID == null) return;
         this.updatedAt = Instant.now();

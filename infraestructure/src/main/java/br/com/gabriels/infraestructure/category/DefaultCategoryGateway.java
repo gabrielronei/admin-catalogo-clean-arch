@@ -10,6 +10,7 @@ import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import static br.com.gabriels.infraestructure.utils.SpecificationUtils.like;
@@ -56,6 +57,11 @@ public class DefaultCategoryGateway implements CategoryGateway {
         Page<CategoryEntity> pagedResult = this.categoryRepository.findAll(specification, pageRequest);
 
         return new Pagination<>(pagedResult.getNumber(), pagedResult.getSize(), pagedResult.getTotalElements(), pagedResult.map(CategoryEntity::toDomainModel).toList());
+    }
+
+    @Override
+    public List<CategoryID> existsByIds(final Iterable<CategoryID> ids) {
+        return List.of();
     }
 
     private Category save(Category category) {

@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
+import java.util.Collections;
 import java.util.List;
 
 public class GenreTest {
@@ -165,5 +166,23 @@ public class GenreTest {
 
         genre.removeCategory(null);
         Assertions.assertThat(genre.getCategories()).hasSize(0);
+    }
+
+    @Test
+    public void givenAValidEmptyCategoriesGenre_whenCallAddCategories_shouldReceiveOk() {
+        final CategoryID seriesId = CategoryID.from("123");
+        final CategoryID moviesId = CategoryID.from("321");
+
+        Genre genre = new Genre("acao", true);
+        Assertions.assertThat(genre.getCategories()).hasSize(0);
+
+        genre.addCategories(null);
+        Assertions.assertThat(genre.getCategories()).hasSize(0);
+
+        genre.addCategories(List.of(seriesId, moviesId));
+        Assertions.assertThat(genre.getCategories()).hasSize(2);
+
+        genre.addCategories(Collections.emptyList());
+        Assertions.assertThat(genre.getCategories()).hasSize(2);
     }
 }
